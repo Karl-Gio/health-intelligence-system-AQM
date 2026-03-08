@@ -8,15 +8,24 @@ use App\Http\Controllers\VitalController;
 
 /*
 |--------------------------------------------------------------------------
-| Sensor Routes (Existing)
+| Sensor Routes (Updated for Live Cache & Manual Save)
 |--------------------------------------------------------------------------
 */
-Route::post('/vitals', [VitalController::class, 'store']);
-Route::get('/vitals', [VitalController::class, 'index']);
+// Tumatanggap ng data mula sa ESP32 at nilalagay sa RAM/Cache
+Route::post('/vitals/live', [VitalController::class, 'updateLive']); 
+
+// Kinukuha ng React Dashboard ang data bawat 2 seconds mula sa Cache
+Route::get('/vitals/live', [VitalController::class, 'getLive']);    
+
+// Tini-trigger ng "Save to Database" button sa React para isulat sa MySQL
+Route::post('/vitals/save', [VitalController::class, 'saveToDb']);  
+
+// Kinukuha ang mga nai-save na logs para sa table at graphs
+Route::get('/vitals', [VitalController::class, 'index']);           
 
 /*
 |--------------------------------------------------------------------------
-| Authentication Routes (Updated)
+| Authentication Routes (Existing/Untouched)
 |--------------------------------------------------------------------------
 */
 

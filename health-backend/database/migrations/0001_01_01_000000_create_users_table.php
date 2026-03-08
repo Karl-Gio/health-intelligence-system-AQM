@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // BINAGO NATIN ITO: Pinalitan ang name at email ng username
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('username')->unique(); 
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

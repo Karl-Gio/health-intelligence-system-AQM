@@ -9,17 +9,17 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+public function up(): void
 {
     Schema::create('vitals', function (Blueprint $table) {
         $table->id();
-        $table->integer('bpm');           // Pulse Rate
-        $table->integer('spo2');          // Oxygen Level
-        $table->float('co2Level', 8, 2);  // eCO2 (Estimated)
-        $table->float('tvoc', 8, 2);      // TVOC Level (Dito papasok yung bago)
-        $table->float('temp', 8, 2);      // Temperature
-        $table->float('hum', 8, 2);       // Humidity
-        $table->float('pressure', 8, 2);  // Atmospheric Pressure
+        $table->float('temp');         // Tugma sa hardware
+        $table->float('humidity');     // Dating 'hum'
+        $table->float('pressure');     // Tugma sa hardware
+        $table->integer('pulse_rate'); // Dating 'bpm'
+        $table->integer('spo2');       // Tugma sa hardware
+        $table->integer('eco2');       // Dating 'co2Level'
+        $table->integer('tvoc');       // Tugma sa hardware
         $table->timestamps();
     });
 }

@@ -9,14 +9,15 @@ class Vital extends Model
 {
     use HasFactory;
 
-    // Ito ang listahan ng mga columns na pwede nating "ma-fill" ng data
+    // Siguraduhing tugma ito sa JSON keys mula sa Arduino: 
+    // "temp", "humidity", "pressure", "pulse_rate", "spo2", "eco2", "tvoc"
     protected $fillable = [
-        'bpm', 
-        'spo2', 
-        'co2Level', 
-        'tvoc', 
-        'temp', 
-        'hum', 
-        'pressure'
+        'temp',
+        'humidity',
+        'pressure',
+        'pulse_rate',
+        'spo2',
+        'eco2',
+        'tvoc'
     ];
 }
